@@ -86,9 +86,7 @@ flags.DEFINE_string("job_name", None,"job name: worker or ps")
 
 FLAGS = flags.FLAGS
 
-
 IMAGE_PIXELS = 28
-
 
 def main(unused_argv):
   mnist = input_data.read_data_sets(FLAGS.data_dir, one_hot=True)
@@ -273,7 +271,6 @@ def main(unused_argv):
     val_xent = sess.run(cross_entropy, feed_dict=val_feed)
     print("After %d training step(s), validation cross entropy = %g" %
           (FLAGS.train_steps, val_xent))
-
 
 if __name__ == "__main__":
   tf.app.run()
