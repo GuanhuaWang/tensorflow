@@ -86,6 +86,20 @@ flags.DEFINE_string("job_name", None,"job name: worker or ps")
 
 FLAGS = flags.FLAGS
 
+# on the server side
+# python ./tensorflow/tools/dist_test/python/mnist_replica.py \
+# --ps_hosts=172.31.24.117:2222 --worker_hosts=172.31.24.117:2223,172.31.30.43:2223 --job_name=ps --task_index=0 
+
+
+# on the worker side
+
+# worker 1
+# python ./tensorflow/tools/dist_test/python/mnist_replica.py \
+#--ps_hosts=172.31.24.117:2222 --worker_hosts=172.31.24.117:2223,172.31.30.43:2223 --job_name=worker --task_index=0 
+
+# worker 2
+# python ./tensorflow/tools/dist_test/python/mnist_replica.py \
+#--ps_hosts=172.31.24.117:2222 --worker_hosts=172.31.24.117:2223,172.31.30.43:2223 --job_name=worker --task_index=1 
 
 IMAGE_PIXELS = 28
 
