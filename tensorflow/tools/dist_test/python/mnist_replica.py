@@ -1,38 +1,3 @@
-# Copyright 2016 The TensorFlow Authors. All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ==============================================================================
-
-"""Distributed MNIST training and validation, with model replicas.
-
-A simple softmax model with one hidden layer is defined. The parameters
-(weights and biases) are located on one parameter server (ps), while the ops
-are executed on two worker nodes by default. The TF sessions also run on the
-worker node.
-Multiple invocations of this script can be done in parallel, with different
-values for --task_index. There should be exactly one invocation with
---task_index, which will create a master session that carries out variable
-initialization. The other, non-master, sessions will wait for the master
-session to finish the initialization before proceeding to the training stage.
-
-The coordination between the multiple worker invocations occurs due to
-the definition of the parameters on the same ps devices. The parameter updates
-from one worker is visible to all other workers. As such, the workers can
-perform forward computation and gradient calculation in parallel, which
-should lead to increased training speed for the simple model.
-"""
-
-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
